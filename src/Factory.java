@@ -14,8 +14,8 @@ public class Factory {
      * @param option identificador de la instancia deseada
      * @return la instancia deseada
      */
-    public static Tree<String> factory(String option){
-        return new BRTree<String >();
+    public static Tree<Word<String>> factory(String option){
+        return new SlayTree<Word<String>>();
     }
 
 }

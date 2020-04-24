@@ -4,9 +4,9 @@
  * @since 24-04-2020
  * @version 24-04-2020
  *
- * Un black-red tree
+ * Un splay tree
  */
-public class BRTree<E extends Comparable<E>> implements Tree<E> {
+public class SlayTree<E extends Comparable<E>> implements Tree<E> {
 
     /**
      * Agrega un nuevo elemento en el arbol
@@ -28,6 +28,18 @@ public class BRTree<E extends Comparable<E>> implements Tree<E> {
      */
     public E get(E soughtValue) {
         return null;
+    }
+
+    /**
+     * Busca en el arbol la llave deseada
+     *
+     * @param soughtKey la llave que se quiere buscar
+     * @return true si esta, false si no esta
+     * @pre no se sabe si esta ya en el diccionario
+     * @pos se sabe si esta en el diccionario
+     */
+    public boolean contains(E soughtKey) {
+        return false;
     }
 
 }

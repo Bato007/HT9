@@ -23,4 +23,13 @@ public interface Tree<E extends Comparable<E>> {
      * @return el valor de la llave buscada
      */
     public E get(E soughtValue);
+
+    /**
+     * Busca en el arbol la llave deseada
+     * @pre no se sabe si esta ya en el diccionario
+     * @pos se sabe si esta en el diccionario
+     * @param soughtKey la llave que se quiere buscar
+     * @return true si esta, false si no esta
+     */
+    public boolean contains(E soughtKey);
 }
