@@ -7,8 +7,9 @@ import java.util.NoSuchElementException;
  * @RedBlackTree from: https://algs4.cs.princeton.edu/33balanced/RedBlackBST.java.html
  * Mapeo del rbt
  */
-public class RBT<K extends Comparable<K>, V> implements Tree<K, V>{
-private static final boolean RED   = true;
+public class RBT<K extends Comparable<K>, V> implements Tree<K,V>{
+
+    private static final boolean RED   = true;
     private static final boolean BLACK = false;
 
     private Node root;     // root of the BST

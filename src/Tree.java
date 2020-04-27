@@ -6,7 +6,7 @@
  *
  * Se encarga de mandar instancias a los programas que lo deseen
  */
-public interface Tree<E extends Comparable<E>> {
+public interface Tree<E extends Comparable<E>, V> {
 
     /**
      * Agrega un nuevo elemento en el arbol
@@ -14,7 +14,7 @@ public interface Tree<E extends Comparable<E>> {
      * @pos hay n + 1 cantidad de elementos en el arbol
      * @param newValue valor que se quiere agregar
      */
-    public void add(E newValue);
+    public void add(E newValue, V val);
 
     /**
      * Se encarga de buscar un valor
@@ -22,7 +22,7 @@ public interface Tree<E extends Comparable<E>> {
      * @param soughtValue la llave que se quiere buscar
      * @return el valor de la llave buscada
      */
-    public E get(E soughtValue);
+    public V get(E soughtValue);
 
     /**
      * Busca en el arbol la llave deseada
