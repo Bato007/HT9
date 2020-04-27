@@ -32,8 +32,13 @@ public class Hash<E extends Comparable<E>> implements Tree<E>{
      * @pos se tiene el valor de la llave buscada
      */
     public E get(E soughtValue) {
-        Word<String> temp = (Word<String>) soughtValue;
-        return (E) new Word<String>(map.get(temp.getWord()));
+        if(contains(soughtValue)){
+            Word<String> temp = (Word<String>) soughtValue;
+            Word<String> aux = new Word<>(temp.getWord(), map.get(temp.getWord()));
+            return (E) aux;
+        }else {
+            return null;
+        }
     }
 
     /**
