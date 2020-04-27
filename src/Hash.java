@@ -8,7 +8,7 @@ import java.util.Map;
  *
  * Mapeo del hash
  */
-public class Hash<E extends Comparable<E>> implements Tree<E>{
+public class Hash<E extends Comparable<E>, V> implements Tree<E>{
 
     protected Map<String, String> map = new HashMap<>();
 

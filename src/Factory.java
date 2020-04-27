@@ -15,7 +15,11 @@ public class Factory {
      * @return la instancia deseada
      */
     public static Tree<Word<String>> factory(String option){
-        return new Hash<>();
+		if(option.equals("1"))
+			return new Hash<>();
+		else if(option.equals("2"))
+			return new RBT<>(); 
+		else return null; 
     }
 
 }
