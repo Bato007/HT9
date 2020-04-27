@@ -17,6 +17,7 @@ public class Main {
 
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
+        String auxS;
         //Implementacion del arbol escogido con Factory
         System.out.println("Ingrese el numero de implementacion que desea utilizar: \n1. Hash \n2. RBT");
         String opcion = sc.nextLine();
@@ -47,7 +48,7 @@ public class Main {
                     else i = lineaA[1].length();
                 }
 				aux = new Word<>(word, palabra);
-				if(!diccionario.contains(aux)){
+				if(!diccionario.contains(aux.getWord())){
                     diccionario.add(aux);
                 }
             }
@@ -66,8 +67,8 @@ public class Main {
             // Buscando definicion
             for(int i = 0; i < line.length; i++){
 
-                if((aux = diccionario.get(new Word<String>(line[i]))) != null)
-                    System.out.println(line[i] + " se encontraron las siguientes definiciones: " + aux.getMeaning());
+                if((auxS = diccionario.get(line[i])) != null)
+                    System.out.println(line[i] + " se encontraron las siguientes definiciones: " + auxS);
                 else
                     System.out.println("No se encuentra " + line[i] + " en el diccionario");
             }
