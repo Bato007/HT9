@@ -17,9 +17,8 @@ public class Factory {
     public static Tree<String, String> factory(String option){
 		if(option.equals("1"))
 			return new Hash<String, String>();
-		else if(option.equals("2"))
+		else
 			return new RBT<String, String>();
-		else return null; 
     }
 
 }

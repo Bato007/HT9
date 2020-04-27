@@ -73,8 +73,8 @@ public class Main {
                 else
 					ingles = ingles + " *" + line[i] +"*";
             }
-			System.out.println("Espanol: "+espanol);
-			System.out.println("Ingles: "+ingles);
+			System.out.println("Ingles: "+espanol);
+			System.out.println("Español: "+ingles);
 
         } catch (Exception e){
             System.out.print("No se encuentra el archivo");
