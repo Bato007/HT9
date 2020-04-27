@@ -15,7 +15,7 @@ public class Factory {
      * @return la instancia deseada
      */
     public static Tree<Word<String>> factory(String option){
-        return new SlayTree<Word<String>>();
+        return null;
     }
 
 }
