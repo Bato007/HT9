@@ -63,15 +63,18 @@ public class Main {
 
             read = buffer.readLine();
             line = read.split(" ");
-
+			String espanol = read; 
+			String ingles ="";
             // Buscando definicion
             for(int i = 0; i < line.length; i++){
 
                 if((auxS = diccionario.get(line[i])) != null)
-                    System.out.println(line[i] + " se encontraron las siguientes definiciones: " + auxS);
+					ingles = ingles + " " + auxS;
                 else
-                    System.out.println("No se encuentra " + line[i] + " en el diccionario");
+					ingles = ingles + " *" + line[i] +"*";
             }
+			System.out.println("Espanol: "+espanol);
+			System.out.println("Ingles: "+ingles);
 
         } catch (Exception e){
             System.out.print("No se encuentra el archivo");
