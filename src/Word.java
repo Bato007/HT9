@@ -6,10 +6,11 @@
  *
  * Representa una palabra deldiccionario
  */
-public class Word<E extends Comparable<E>> implements Comparable<Word<E>> {
+public class Word<E extends Comparable<E>, V> implements Comparable<Word<E, V>> {
 
     // Atributos de un objeto
-    private E word, meaning;
+    private E word;
+    private V meaning;
 
     /**
      * Constructor cuando se quiere solo para buscar
@@ -26,7 +27,7 @@ public class Word<E extends Comparable<E>> implements Comparable<Word<E>> {
      * @param word la palabra que se quiere agregar
      * @param meaning el significado de la palabra
      */
-    public Word(E word, E meaning){
+    public Word(E word, V meaning){
         this.word = word;
         this.meaning = meaning;
     }
@@ -37,7 +38,7 @@ public class Word<E extends Comparable<E>> implements Comparable<Word<E>> {
      * @param that objeto con que se quiere comparar
      * @return 0 si son iguales, -1 si that es mayor, 1 si this.word es mayor
      */
-    public int compareTo(Word<E> that) {
+    public int compareTo(Word<E, V> that) {
         return this.word.compareTo(that.word);
     }
 
@@ -46,7 +47,7 @@ public class Word<E extends Comparable<E>> implements Comparable<Word<E>> {
      * @pos se cuenta con el significado de la palabra
      * @return el significado de la palabra
      */
-    public E getMeaning() {
+    public V getMeaning() {
         return meaning;
     }
 

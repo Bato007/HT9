@@ -99,7 +99,7 @@ public class RBT<K extends Comparable<K>, V> implements Tree<K,V>{
      *     {@code false} otherwise
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
-    public boolean containsKey(K key) {
+    public boolean contains(K key) {
         return get(key) != null;
     }
 
@@ -113,18 +113,17 @@ public class RBT<K extends Comparable<K>, V> implements Tree<K,V>{
      * Deletes the specified key (and its associated value) from this symbol table
      * if the specified value is {@code null}.
      *
-     * @param key the key
-     * @param val the value
+     * @param newValue add value to the rbt
      * @throws IllegalArgumentException if {@code key} is {@code null}
      */
-    public void add(K key, V val) {
-        if (key == null) throw new IllegalArgumentException("first argument to put() is null");
-        if (val == null) {
-            delete(key);
+    public void add(Word<K, V> newValue) {
+        if (newValue.getWord() == null) throw new IllegalArgumentException("first argument to put() is null");
+        if (newValue.getMeaning() == null) {
+            delete(newValue.getWord());
             return;
         }
 
-        root = put(root, key, val);
+        root = put(root, newValue.getWord(), newValue.getMeaning());
         root.color = BLACK;
         // assert check();
     }
@@ -230,7 +229,7 @@ public class RBT<K extends Comparable<K>, V> implements Tree<K,V>{
      */
     public void delete(K key) { 
         if (key == null) throw new IllegalArgumentException("argument to delete() is null");
-        if (!containsKey(key)) return;
+        if (!contains(key)) return;
 
         // if both children of root are black, set root to red
         if (!isRed(root.left) && !isRed(root.right))

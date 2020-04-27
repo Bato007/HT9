@@ -14,7 +14,7 @@ public interface Tree<E extends Comparable<E>, V> {
      * @pos hay n + 1 cantidad de elementos en el arbol
      * @param newValue valor que se quiere agregar
      */
-    public void add(E newValue, V val);
+    public void add(Word<E, V> newValue);
 
     /**
      * Se encarga de buscar un valor

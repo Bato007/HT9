@@ -8,9 +8,9 @@ import java.util.Map;
  *
  * Mapeo del hash
  */
-public class Hash<E extends Comparable<E>, V> implements Tree<E>{
+public class Hash<E extends Comparable<E>, V> implements Tree<E, V>{
 
-    protected Map<String, String> map = new HashMap<>();
+    protected Map<E, V> map = new HashMap<>();
 
     /**
      * Agrega un nuevo elemento en el arbol
@@ -19,9 +19,8 @@ public class Hash<E extends Comparable<E>, V> implements Tree<E>{
      * @pre hay n cantidad de elementos en el arbol
      * @pos hay n + 1 cantidad de elementos en el arbol
      */
-    public void add(E newValue) {
-        Word<String> temp = (Word<String>) newValue;
-        map.put(temp.getWord(), temp.getMeaning());
+    public void add(Word<E,V> newValue) {
+        map.put(newValue.getWord(), newValue.getMeaning());
     }
 
     /**
@@ -31,14 +30,8 @@ public class Hash<E extends Comparable<E>, V> implements Tree<E>{
      * @return el valor de la llave buscada
      * @pos se tiene el valor de la llave buscada
      */
-    public E get(E soughtValue) {
-        if(contains(soughtValue)){
-            Word<String> temp = (Word<String>) soughtValue;
-            Word<String> aux = new Word<>(temp.getWord(), map.get(temp.getWord()));
-            return (E) aux;
-        }else {
-            return null;
-        }
+    public V get(E soughtValue) {
+        return map.get(soughtValue);
     }
 
     /**
@@ -50,7 +43,6 @@ public class Hash<E extends Comparable<E>, V> implements Tree<E>{
      * @pos se sabe si esta en el diccionario
      */
     public boolean contains(E soughtKey) {
-        Word<String> temp = (Word<String>) soughtKey;
-        return map.containsKey(temp.getWord());
+        return map.containsKey(soughtKey);
     }
 }

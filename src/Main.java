@@ -20,10 +20,10 @@ public class Main {
         //Implementacion del arbol escogido con Factory
         System.out.println("Ingrese el numero de implementacion que desea utilizar: \n1. Hash \n2. RBT");
         String opcion = sc.nextLine();
-        Tree<Word<String>> arbol = Factory.factory(opcion);
+        Tree<String, String> arbol = Factory.factory(opcion);
         
-        Tree<Word<String>> diccionario = Factory.factory(opcion); //Arbol para guardar el diccionario
-		Word<String> aux;
+        Tree<String, String> diccionario = Factory.factory(opcion); //Arbol para guardar el diccionario
+		Word<String, String> aux;
 
         //we create a try that tries to read txt that catches if the txt does not exist
 		String read;
