@@ -50,4 +50,13 @@ public class Word<E extends Comparable<E>> implements Comparable<Word<E>> {
         return meaning;
     }
 
+    /**
+     * Obtiene la palabra
+     * @pos se cuenta con la palabra
+     * @return la palabra en ingles
+     */
+    public E getWord() {
+        return word;
+    }
+
 }

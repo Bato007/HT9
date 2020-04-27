@@ -15,7 +15,7 @@ public class Factory {
      * @return la instancia deseada
      */
     public static Tree<Word<String>> factory(String option){
-        return null;
+        return new Hash<>();
     }
 
 }

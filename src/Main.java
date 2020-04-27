@@ -7,69 +7,77 @@
  *
  * Arranque del programa
  */
- 
-import java.io.BufferedReader;
-import java.io.FileReader;
+
 import java.util.Scanner;
 import java.io.File;
 
 public class Main {
 
     public static void main(String[] args){
-		Tree<Word<String>> diccionario;
-		Word<String> aux;
         Scanner sc = new Scanner(System.in);
+        //Implementacion del arbol escogido con Factory
+        System.out.println("Ingrese el numero de implementacion que desea utilizar: \n1. Splay tree \n2. RBT");
+        String opcion = sc.nextLine();
+        Tree<Word<String>> arbol = Factory.factory(opcion);
+        //Lectura archivo diccionario
+        String archive = "Spanish.txt";
+        File fichero = new File(archive);
+        Scanner s = null;
+        String linea = "";
+        Tree<Word<String>> diccionario = Factory.factory(opcion); //Arbol para guardar el diccionario
+        //Prueba para leer el archivo
+		/*
+		String p = "abdomen	abdo/men";
+		String pa = "";
+		String[] pp = p.split("	"); // no es un espacio es un tab
+		String w = pp[0]; //palabra en ingles
+		for(int i = 0; i<pp[1].length(); i++){
+			Character l = pp[1].substring(i,i+1).charAt(0);
+			if(Character.isLetter(l)==true || l.equals(' ')==true || l.equals('~')==true ||l.equals('/')==true){
+				pa = pa + Character.toString(l);
+			}
+			else i = pp[1].length();
+		}
+		System.out.println(w+ "//" +pa);
+		*/
 
-        String[] line;
-        String opcion, read ;
-
-		//Implementacion del arbol escogido con Factory 
-		System.out.println("Ingrese el numero de implementacion que desea utilizar: \n1. Splay tree \n2. RBT");
-		opcion = sc.nextLine();
-        diccionario = Factory.factory(opcion);
-
-        try{
-            FileReader file = new FileReader("Spanish.txt");
-            BufferedReader buffer = new BufferedReader(file);
-
-            for(int i = 0; i < 10; i++){
-                buffer.readLine();
-            }
-
-            while ((read = buffer.readLine()) != null){
-
-                line = read.split("\t");
-                aux = new Word<>(line[0], line[1]);
-
-                if(!diccionario.contains(aux)){
-                    diccionario.add(aux);
+        //we create a try that tries to read txt that catches if the txt does not exist
+        try {
+            //the scanner reads the file
+            s = new Scanner(fichero);
+            int c = 0;
+            while(s.hasNextLine()){
+                //Las primeras 10 lineas no son utiles
+                c++;
+                if (c>=10){
+                    linea = s.nextLine();
+                    String[] lineaA = linea.split("	"); // no es un espacio es un tab
+                    String word = lineaA[0]; //palabra en ingles
+                    String palabra = "";
+                    for(int i = 0; i<lineaA[1].length(); i++){
+                        Character l = lineaA[1].substring(i,i+1).charAt(0);
+                        if(Character.isLetter(l)==true || l.equals(' ')==true || l.equals('~')==true ||l.equals('/')==true){
+                            palabra = palabra + Character.toString(l);
+                        }
+                        else i = lineaA[1].length();
+                    }
+                    System.out.println(word +"//"+palabra);
                 }
-
             }
-
-        } catch (Exception e){
-            System.out.print("No se encuentra el diccionario");
         }
-
-        // Leyendo el texto para la traduccion
-        try{
-            FileReader file = new FileReader("texto.txt");
-            BufferedReader buffer = new BufferedReader(file);
-
-            read = buffer.readLine();
-            line = read.split(" ");
-
-            // Buscando definicion
-            for(int i = 0; i < line.length; i++){
-
-                if((aux = diccionario.get(new Word<String>(line[i]))) != null)
-                    System.out.println(line[i] + " se encontraron las siguientes definiciones: " + aux.getMeaning());
-                else
-                    System.out.println("No se encuentra " + line[i] + " en el diccionario");
+        //if the txt does not exist it prints the exception message
+        catch (Exception ex) {
+            System.out.println("Mensaje: " + ex.getMessage());
+        }
+        //FInally we close the txt
+        finally {
+            try {
+                if (s != null) {
+                    s.close();
+                }
+            } catch (Exception ex2) {
+                System.out.println("Mensaje 2: " + ex2.getMessage());
             }
-
-        } catch (Exception e){
-            System.out.print("No se encuentra el archivo");
         }
 
 
